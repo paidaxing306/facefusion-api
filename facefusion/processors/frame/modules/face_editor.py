@@ -3,6 +3,7 @@ from time import sleep
 from typing import Any, List, Literal, Optional, Tuple
 
 import numpy
+from numpy._typing import NDArray
 
 import facefusion.jobs.job_manager
 import facefusion.jobs.job_store
@@ -162,7 +163,7 @@ def edit_face(target_face: Face, temp_vision_frame : VisionFrame) -> VisionFrame
 	return temp_vision_frame
 
 
-def apply_edit(crop_vision_frame : VisionFrame, eye_ratio : numpy.ndarray[Any, Any], lip_ratio : numpy.ndarray[Any, Any]) -> VisionFrame:
+def apply_edit(crop_vision_frame : VisionFrame, eye_ratio : NDArray[Any], lip_ratio : NDArray[Any]) -> VisionFrame:
 	frame_processor = get_frame_processor()
 	frame_processor_inputs = {}
 
@@ -184,22 +185,22 @@ def apply_edit(crop_vision_frame : VisionFrame, eye_ratio : numpy.ndarray[Any, A
 	return crop_vision_frame
 
 
-def calc_face_edit_ratio(face_landmark_68 : FaceLandmark68) -> Tuple[numpy.ndarray[Any, Any], numpy.ndarray[Any, Any]]:
+def calc_face_edit_ratio(face_landmark_68 : FaceLandmark68) -> Tuple[NDArray[Any], NDArray[Any]]:
 	eye_ratio = numpy.array(
 	[
 		calc_distance_ratio(face_landmark_68, 37, 40, 39, 36),
 		calc_distance_ratio(face_landmark_68, 43, 46, 45, 42),
 		state_manager.get_item('face_editor_eye_factor')
-	], numpy.float32)
+	])
 	lip_ratio = numpy.array(
 	[
 		calc_distance_ratio(face_landmark_68, 62, 66, 54, 48),
 		state_manager.get_item('face_editor_lip_factor')
-	], numpy.float32)
+	])
 	return eye_ratio, lip_ratio
 
 
-def prepare_blend_amount(blend_amount : int) -> numpy.ndarray[Any, Any]:
+def prepare_blend_amount(blend_amount : int) -> NDArray[Any]:
 	map_blend_amount = map_float(float(blend_amount), 0, 100, 0, 0.8)
 	return numpy.array([ map_blend_amount ]).astype(numpy.float32)
 
