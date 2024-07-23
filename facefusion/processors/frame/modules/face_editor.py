@@ -47,7 +47,7 @@ def get_frame_processor() -> Any:
 		while process_manager.is_checking():
 			sleep(0.5)
 		if FRAME_PROCESSOR is None:
-			model_path = MODELS.get('eye_lip_editor').get('path')
+			model_path = get_options('model').get('path')
 			FRAME_PROCESSOR = create_inference_session(model_path, state_manager.get_item('execution_device_id'), state_manager.get_item('execution_providers'))
 	return FRAME_PROCESSOR
 
@@ -59,11 +59,20 @@ def clear_frame_processor() -> None:
 
 
 def get_options(key : Literal['model']) -> Any:
-	pass
+	global OPTIONS
+
+	if OPTIONS is None:
+		OPTIONS =\
+		{
+			'model': MODELS.get('eye_lip_editor')
+		}
+	return OPTIONS.get(key)
 
 
 def set_options(key : Literal['model'], value : Any) -> None:
-	pass
+	global OPTIONS
+
+	OPTIONS[key] = value
 
 
 def register_args(program : ArgumentParser) -> None:
@@ -85,8 +94,8 @@ def apply_args(args : Args) -> None:
 
 def pre_check() -> bool:
 	download_directory_path = resolve_relative_path('../.assets/models')
-	model_url = MODELS.get('eye_lip_editor').get('url')
-	model_path = MODELS.get('eye_lip_editor').get('path')
+	model_url = get_options('model').get('url')
+	model_path = get_options('model').get('path')
 
 	if not state_manager.get_item('skip_download'):
 		process_manager.check()
@@ -96,8 +105,8 @@ def pre_check() -> bool:
 
 
 def post_check() -> bool:
-	model_url = MODELS.get('eye_lip_editor').get('url')
-	model_path = MODELS.get('eye_lip_editor').get('path')
+	model_url = get_options('model').get('url')
+	model_path = get_options('model').get('path')
 
 	if not state_manager.get_item('skip_download') and not is_download_done(model_url, model_path):
 		logger.error(wording.get('model_download_not_done') + wording.get('exclamation_mark'), NAME)
@@ -132,8 +141,8 @@ def post_process() -> None:
 
 
 def edit_face(target_face: Face, temp_vision_frame : VisionFrame) -> VisionFrame:
-	model_template = MODELS.get('eye_lip_editor').get('template')
-	model_size = MODELS.get('eye_lip_editor').get('size')
+	model_template = get_options('model').get('template')
+	model_size = get_options('model').get('size')
 	eye_ratio, lip_ratio = calc_face_edit_ratio(target_face.landmark_set.get('68'))
 	crop_vision_frame, affine_matrix = warp_face_by_face_landmark_5(temp_vision_frame, target_face.landmark_set.get('5/68'), model_template, model_size)
 	box_mask = create_static_box_mask(crop_vision_frame.shape[:2][::-1], state_manager.get_item('face_mask_blur'), (0, 0, 0, 0))
