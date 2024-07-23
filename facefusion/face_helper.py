@@ -1,5 +1,5 @@
 from functools import lru_cache
-from typing import Any, List, Sequence, Tuple
+from typing import List, Sequence, Tuple
 
 import cv2
 import numpy
