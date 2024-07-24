@@ -191,12 +191,13 @@ def calc_face_edit_ratio(face_landmark_68 : FaceLandmark68) -> Tuple[NDArray[Any
 		calc_distance_ratio(face_landmark_68, 37, 40, 39, 36),
 		calc_distance_ratio(face_landmark_68, 43, 46, 45, 42),
 		state_manager.get_item('face_editor_eye_factor')
-	])
+	]).astype(numpy.float32)
 	lip_ratio = numpy.array(
 	[
 		calc_distance_ratio(face_landmark_68, 62, 66, 54, 48),
 		state_manager.get_item('face_editor_lip_factor')
-	])
+	]).astype(numpy.float32)
+
 	return eye_ratio, lip_ratio
 
 
