@@ -15,22 +15,30 @@ if is_macos():
 	ssl._create_default_https_context = ssl._create_unverified_context
 
 
+# def conditional_download(download_directory_path : str, urls : List[str]) -> None:
+# 	for url in urls:
+# 		print("save to", download_directory_path)
+# 		print("downloading", url)
+# 		download_file_path = os.path.join(download_directory_path, os.path.basename(url))
+# 		initial_size = get_file_size(download_file_path)
+# 		download_size = get_download_size(url)
+# 		if initial_size < download_size:
+# 			with tqdm(total = download_size, initial = initial_size, desc = wording.get('downloading'), unit = 'B', unit_scale = True, unit_divisor = 1024, ascii = ' =', disable = facefusion.globals.log_level in [ 'warn', 'error' ]) as progress:
+# 				subprocess.Popen([ 'curl', '--create-dirs', '--silent', '--insecure', '--location', '--continue-at', '-', '--output', download_file_path, url ])
+# 				current_size = initial_size
+# 				while current_size < download_size:
+# 						current_size = get_file_size(download_file_path)
+# 						progress.update(current_size - progress.n)
+# 		if download_size and not is_download_done(url, download_file_path):
+# 			os.remove(download_file_path)
+# 			conditional_download(download_directory_path, [ url ])
+
+
 def conditional_download(download_directory_path : str, urls : List[str]) -> None:
 	for url in urls:
-		download_file_path = os.path.join(download_directory_path, os.path.basename(url))
-		initial_size = get_file_size(download_file_path)
-		download_size = get_download_size(url)
-		if initial_size < download_size:
-			with tqdm(total = download_size, initial = initial_size, desc = wording.get('downloading'), unit = 'B', unit_scale = True, unit_divisor = 1024, ascii = ' =', disable = facefusion.globals.log_level in [ 'warn', 'error' ]) as progress:
-				subprocess.Popen([ 'curl', '--create-dirs', '--silent', '--insecure', '--location', '--continue-at', '-', '--output', download_file_path, url ])
-				current_size = initial_size
-				while current_size < download_size:
-					if is_file(download_file_path):
-						current_size = get_file_size(download_file_path)
-						progress.update(current_size - progress.n)
-		if download_size and not is_download_done(url, download_file_path):
-			os.remove(download_file_path)
-			conditional_download(download_directory_path, [ url ])
+		print("skip save to", download_directory_path)
+		print("skip downloading", url)
+
 
 
 @lru_cache(maxsize = None)

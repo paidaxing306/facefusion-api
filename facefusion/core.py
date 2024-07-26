@@ -48,6 +48,7 @@ def cli() -> None:
 	group_misc.add_argument('--skip-download', help = wording.get('help.skip_download'), action = 'store_true', default = config.get_bool_value('misc.skip_download'))
 	group_misc.add_argument('--headless', help = wording.get('help.headless'), action = 'store_true', default = config.get_bool_value('misc.headless'))
 	group_misc.add_argument('--log-level', help = wording.get('help.log_level'), default = config.get_str_value('misc.log_level', 'info'), choices = logger.get_log_levels())
+	group_misc.add_argument('--api', action='store_true', default=config.get_bool_value('misc.api'))
 	# execution
 	execution_providers = encode_execution_providers(onnxruntime.get_available_providers())
 	group_execution = program.add_argument_group('execution')
@@ -141,6 +142,7 @@ def apply_args(program : ArgumentParser) -> None:
 	facefusion.globals.skip_download = args.skip_download
 	facefusion.globals.headless = args.headless
 	facefusion.globals.log_level = args.log_level
+	facefusion.globals.api = args.api
 	# execution
 	facefusion.globals.execution_device_id = args.execution_device_id
 	facefusion.globals.execution_providers = decode_execution_providers(args.execution_providers)
@@ -225,6 +227,9 @@ def run(program : ArgumentParser) -> None:
 			return
 	if facefusion.globals.headless:
 		conditional_process()
+	elif facefusion.globals.api:
+		import facefusion.api.core as api
+		api.launch()
 	else:
 		import facefusion.uis.core as ui
 
