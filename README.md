@@ -1,15 +1,13 @@
-#### 更新日志
+#### 相关说明
 1. 增加restful api 接口文件方便http调用
 2. 去除启动，处理时模型校验，优化加载速度
 3. 如果需要指定运行 python版本，修改处理器，模型，线程数等命令 在restful_api.py 的process方法中的command 修改
 4. 变更基于官方代码tag2.6.1
 5. python restful_api.py启动
+6. 需要手动[模型下载](https://www.123pan.com/s/Y23QTd-PtJmh.html)放到 .assets/models目录
 
 restful接口请求示例
 
-	模型需要手动下载放到 .assets/models目录
-
-	启动命令 python restful_api.py
 处理换脸接口
 ```curl
 curl --location --request POST '127.0.0.1:7861/process' \
