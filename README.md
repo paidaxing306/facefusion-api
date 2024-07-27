@@ -1,3 +1,71 @@
+#### restful接口请求示例
+
+	启动命令 python restful_api.py
+
+
+	"""
+	处理换脸
+	curl --location --request POST '127.0.0.1:7861/process' \
+	--header 'Content-Type: application/json' \
+	--data-raw '{
+		"sources": [
+			"C:\\Users\\Administrator\\Desktop\\0df431adcbef7609ca41e7b6292b02cb7dd99e4a.jpg",
+			"C:\\Users\\Administrator\\Desktop\\005JErWoly4gkzi4c7oq9j30lx0dmdnd.png"
+		],
+		"target": "C:\\Users\\Administrator\\Desktop\\target.jpg"
+	"""
+
+
+	"""
+	上传本地文件
+	curl --location --request POST 'http://127.0.0.1:7861/upload' \
+	--header 'multipart/form-data; boundary=<在发送请求时计算>' \
+	--form 'files=@"C:\\Users\\Administrator\\Desktop\\0df431adcbef7609ca41e7b6292b02cb7dd99e4a.jpg"'
+
+	:return: ["C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\tmpgc6loewr\\0df431adcbef7609ca41e7b6292b02cb7dd99e4a.jpg"]
+	"""
+
+
+
+
+	"""
+	加载网络文件到本地
+	curl --location --request POST '127.0.0.1:7861/load' \
+	--header 'Content-Type: application/json' \
+	--data-raw '["https://i1.hdslb.com/bfs/archive/9435dad4ccefc1672afdb723799d1a1810df37d5.jpg",
+	"https://i1.hdslb.com/bfs/archive/9435dad4ccefc1672afdb723799d1a1810df37d5.jpg"]'
+
+	:param file_urls:  ["https://i1.hdslb.com/bfs/archive/9435dad4ccefc1672afdb723799d1a1810df37d5.jpg"]
+	:return: ["C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\tmp2ecn7i18\\9435dad4ccefc1672afdb723799d1a1810df37d5.jpg"]
+	"""
+
+
+#### 视频换脸 命令
+
+```sh
+E:\miniconda3\envs\facefusion3\python run.py --headless --execution-providers cpu cuda -s C:\Users\Administrator\Desktop\0df431adcbef7609ca41e7b6292b02cb7dd99e4a.jpg  -t C:\Users\Administrator\Desktop\result.mp4  -o C:\Users\Administrator\Desktop\resultresult.mp4
+```
+
+
+
+#### 图片换脸
+
+```sh
+E:\miniconda3\envs\facefusion3\python run.py --headless --execution-providers cuda cpu  -s C:\Users\Administrator\Desktop\0df431adcbef7609ca41e7b6292b02cb7dd99e4a.jpg -s C:\Users\Administrator\Desktop\005JErWoly4gkzi4c7oq9j30lx0dmdnd.png -t  C:\Users\Administrator\Desktop\target.jpg -o .
+```
+
+#### 命令提示
+
+```sh
+python run.py -h
+```
+
+
+
+
+
+
+
 FaceFusion
 ==========
 

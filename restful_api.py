@@ -17,6 +17,7 @@ router = APIRouter()
 @app.post("/upload")
 async def upload_files(files: list[UploadFile] = File(...)):
 	"""
+	上传本地文件
 	curl --location --request POST 'http://127.0.0.1:7861/upload' \
 	--header 'multipart/form-data; boundary=<在发送请求时计算>' \
 	--form 'files=@"C:\\Users\\Administrator\\Desktop\\0df431adcbef7609ca41e7b6292b02cb7dd99e4a.jpg"'
