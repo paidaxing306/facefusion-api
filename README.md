@@ -4,7 +4,8 @@
 3. 如果需要指定运行 python版本，修改处理器，模型，线程数等命令 在restful_api.py 的process方法中的command 修改
 4. 变更基于官方代码tag2.6.1
 5. python restful_api.py启动
-### restful接口请求示例
+
+restful接口请求示例
 
 	模型需要手动下载放到 .assets/models目录
 
