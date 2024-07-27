@@ -1,7 +1,8 @@
 #### restful接口请求示例
 
-	启动命令 python restful_api.py
+	模型需要手动下载放到 .assets/models目录
 
+	启动命令 python restful_api.py
 
 	"""
 	处理换脸
