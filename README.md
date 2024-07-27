@@ -10,7 +10,7 @@ restful接口请求示例
 	模型需要手动下载放到 .assets/models目录
 
 	启动命令 python restful_api.py
-
+处理换脸接口
 ```curl
 curl --location --request POST '127.0.0.1:7861/process' \
 	--header 'Content-Type: application/json' \
