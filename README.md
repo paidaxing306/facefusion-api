@@ -9,10 +9,11 @@
 	--header 'Content-Type: application/json' \
 	--data-raw '{
 		"sources": [
-			"C:\\Users\\Administrator\\Desktop\\0df431adcbef7609ca41e7b6292b02cb7dd99e4a.jpg",
-			"C:\\Users\\Administrator\\Desktop\\005JErWoly4gkzi4c7oq9j30lx0dmdnd.png"
+			"C:\\Users\\Administrator\\Desktop\\0df431adcbef7609ca41e7b6292b02cb7dd99e4a.jpg", #upload，load接口返回的图片或者视频
+			"C:\\Users\\Administrator\\Desktop\\005JErWoly4gkzi4c7oq9j30lx0dmdnd.png" #upload，load接口返回的图片或者视频
 		],
-		"target": "C:\\Users\\Administrator\\Desktop\\target.jpg"
+		"target": "C:\\Users\\Administrator\\Desktop\\target.jpg" #upload，load接口返回的图片或者视频
+
 	"""
 
 
