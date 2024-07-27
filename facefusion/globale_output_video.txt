@@ -1,0 +1,64 @@
+----------------------------------------
+FaceAnalyserAge: typing.Literal['child', 'teen', 'adult', 'senior']
+FaceAnalyserGender: typing.Literal['female', 'male']
+FaceAnalyserOrder: typing.Literal['left-right', 'right-left', 'top-bottom', 'bottom-top', 'small-large', 'large-small', 'best-worst', 'worst-best']
+FaceDetectorModel: typing.Literal['many', 'retinaface', 'scrfd', 'yoloface', 'yunet']
+FaceMaskRegion: typing.Literal['skin', 'left-eyebrow', 'right-eyebrow', 'left-eye', 'right-eye', 'glasses', 'nose', 'mouth', 'upper-lip', 'lower-lip']
+FaceMaskType: typing.Literal['box', 'occlusion', 'region']
+FaceRecognizerModel: typing.Literal['arcface_blendswap', 'arcface_inswapper', 'arcface_simswap', 'arcface_uniface']
+FaceSelectorMode: typing.Literal['many', 'one', 'reference']
+List: typing.List
+LogLevel: typing.Literal['error', 'warn', 'info', 'debug']
+Optional: typing.Optional
+OutputVideoEncoder: typing.Literal['libx264', 'libx265', 'libvpx-vp9', 'h264_nvenc', 'hevc_nvenc', 'h264_amf', 'hevc_amf']
+OutputVideoPreset: typing.Literal['ultrafast', 'superfast', 'veryfast', 'faster', 'fast', 'medium', 'slow', 'slower', 'veryslow']
+Padding: typing.Tuple[int, int, int, int]
+TempFrameFormat: typing.Literal['jpg', 'png', 'bmp']
+VideoMemoryStrategy: typing.Literal['strict', 'moderate', 'tolerant']
+api: None
+config_path: facefusion.ini
+execution_device_id: 0
+execution_providers: ['CUDAExecutionProvider', 'CPUExecutionProvider']
+execution_queue_count: 1
+execution_thread_count: 4
+face_analyser_age: None
+face_analyser_gender: None
+face_analyser_order: left-right
+face_detector_model: yoloface
+face_detector_score: 0.5
+face_detector_size: 640x640
+face_landmarker_score: 0.5
+face_mask_blur: 0.3
+face_mask_padding: (0, 0, 0, 0)
+face_mask_regions: ['skin', 'left-eyebrow', 'right-eyebrow', 'left-eye', 'right-eye', 'glasses', 'nose', 'mouth', 'upper-lip', 'lower-lip']
+face_mask_types: ['box']
+face_recognizer_model: arcface_inswapper
+face_selector_mode: reference
+force_download: None
+frame_processors: ['face_swapper']
+headless: None
+keep_temp: None
+log_level: info
+open_browser: None
+output_image_quality: 80
+output_image_resolution: None
+output_path: .
+output_video_encoder: libx264
+output_video_fps: 24.0
+output_video_preset: veryfast
+output_video_quality: 80
+output_video_resolution: 540x814
+reference_face_distance: 0.6
+reference_face_position: 0
+reference_frame_number: 0
+skip_audio: None
+skip_download: None
+source_paths: ['C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\gradio\\7365440f16bf0e68d6b02131d93b7fef6b17b055\\0df431adcbef7609ca41e7b6292b02cb7dd99e4a.jpg']
+system_memory_limit: 0
+target_path: C:\Users\ADMINI~1\AppData\Local\Temp\gradio\6c65353b77c54c5a56debde45de0846336e8363d\target.mp4
+temp_frame_format: png
+trim_frame_end: None
+trim_frame_start: None
+ui_layouts: ['default']
+video_memory_strategy: strict
+----------------------------------------

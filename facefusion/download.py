@@ -14,7 +14,7 @@ from facefusion.filesystem import get_file_size, is_file
 if is_macos():
 	ssl._create_default_https_context = ssl._create_unverified_context
 
-
+# todo pdx 跳过启动模型检查加速启动
 # def conditional_download(download_directory_path : str, urls : List[str]) -> None:
 # 	for url in urls:
 # 		print("save to", download_directory_path)
@@ -32,6 +32,7 @@ if is_macos():
 # 		if download_size and not is_download_done(url, download_file_path):
 # 			os.remove(download_file_path)
 # 			conditional_download(download_directory_path, [ url ])
+# 	print("finished downloading")
 
 
 def conditional_download(download_directory_path : str, urls : List[str]) -> None:
