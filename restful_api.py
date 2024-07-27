@@ -83,12 +83,19 @@ curl --location --request POST '127.0.0.1:7861/process' \
 	output_file_name = os.path.basename(f'output{file_path.suffix}')
 	output_file_path = os.path.join(tempfile.mkdtemp(), output_file_name)
 	command = [
-		'E:\\miniconda3\\envs\\facefusion3\\python', 'run.py',
+		'python', 'run.py',
 		'--headless',
 		'--execution-providers', 'cpu','cuda',
 		'-t', target,
 		'-o', output_file_path
 	]
+	# command = [
+	# 	'E:\\miniconda3\\envs\\facefusion3\\python', 'run.py',
+	# 	'--headless',
+	# 	'--execution-providers', 'cpu','cuda',
+	# 	'-t', target,
+	# 	'-o', output_file_path
+	# ]
 
 	for source in sources:
 		command.append('-s')
