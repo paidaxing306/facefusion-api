@@ -1,7 +1,7 @@
 #### 更新日志
 1. 增加restful api 接口文件方便http调用
 2. 去除启动，处理时模型校验，优化加载速度
-3. 如果需要指定运行 python版本 修改处理器，模型，线程数等命令 在restful_api.py 的process方法中的command 修改
+3. 如果需要指定运行 python版本，修改处理器，模型，线程数等命令 在restful_api.py 的process方法中的command 修改
 4. 变更基于官方代码tag2.6.1
 5. python restful_api.py启动
 ### restful接口请求示例
